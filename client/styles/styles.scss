@@ -1,2 +1,27 @@
 @import ".meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic";
 @import ".meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons";
+
+// We want the profile section to take up 40% of the view height.
+.profile-wrapper {
+  height: 40vh;
+  // We want our image to be centered.
+  .image-wrapper {
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // We want our image to be circular with a gray border.
+    img {
+      border: solid 1px #ccc;
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+    }
+  }
+  // We want our login buttons to be centered.
+  .login-wrapper {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+  }
+}
