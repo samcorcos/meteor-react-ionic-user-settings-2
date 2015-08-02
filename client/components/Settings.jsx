@@ -30,7 +30,7 @@ Profile = React.createClass({
           <img src={this.data.user.profile.image} />
         </div>
         <div className="login-wrapper">
-          Logout | Profile
+          Logout
         </div>
       </div>
     )
