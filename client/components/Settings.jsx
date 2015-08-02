@@ -21,6 +21,9 @@ Profile = React.createClass({
     if (this.data.userLoading) {
       return <AppLoading />
     }
+    if (!this.data.userLoading || !this.data.user) {
+      return <h2>Please Log in.</h2>
+    }
     return (
       <div className="profile-wrapper">
         <div className="image-wrapper">
