@@ -12,35 +12,28 @@ Settings = React.createClass({
 Profile = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
-    if (Meteor.loggingIn() || !Meteor.user()) {this.setState({loginStatus: false})};
-    if (Meteor.user()) {this.setState({loginStatus: true})};
     return {
       user: Meteor.user(),
       userLoading: Meteor.loggingIn()
     }
   },
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.loginStatus !== this.state.loginStatus;
-  },
-  getInitialState() {
-    return {
-      loginStatus: false
-    }
+  getLoginStatus() {
+    if (this.data.userLoading || !this.data.user) {return false;}
+    if (this.data.user) {return true;}
+    return false
   },
   render() {
+    let loginStatus = this.getLoginStatus();
     if (this.data.userLoading) {
       return <AppLoading />
-    }
-    if (!this.data.user) {
-      return <h2>Please Log in.</h2>
-    }
+    };
     return (
       <div className="profile-wrapper">
         <div className="image-wrapper">
-          <img src={this.data.user.profile.image} />
+          {loginStatus ? <img src={this.data.user.profile.image} /> : <div></div>}
         </div>
         <div className="login-wrapper">
-          {this.state.loginStatus ? <LoggedIn ionModal={this.props.ionModal} /> : <NotLoggedIn ionModal={this.props.ionModal} />}
+          {loginStatus ? <LoggedIn ionModal={this.props.ionModal} /> : <NotLoggedIn setModalState={this.props.setModalState} ionModal={this.props.ionModal} />}
         </div>
       </div>
     )
