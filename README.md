@@ -1,3 +1,3 @@
-# Meteor-React-Ionic Users and Settings-1
+# Meteor-React-Ionic Users and Settings-2
 
-This is the first part of users and settings. We're just going to create the view. We will worry about functionality in a second piece.
+This is the second part of users and settings.
